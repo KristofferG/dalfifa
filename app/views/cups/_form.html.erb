@@ -1,0 +1,29 @@
+<div id="cup_form">
+  <%= simple_form_for(@cup, html: { class: 'form-horizontal'}) do |f| %>
+    <% if @cup.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@cup.errors.count, "error") %>. Turren kunde inte skapas pga:
+        </h2>
+        <ul>
+          <% @cup.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class ="form-group">
+        <%= f.label :Turrenamn, class: 'control-label' %>
+        <%= f.input_field :title, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :Välj_spelare, class: 'control-label' %>
+        <div align="left" class="col-xs-offset-5">
+          <%= f.association :players, as: :check_boxes, label: false, class: 'checkbox' %>
+        </div>
+    </div>
+    <div class="actions form-group">
+        <%= f.submit "SKAPA TURRE", class: 'btn btn-primary'%>
+    </div>
+    <% end %>
+</div>

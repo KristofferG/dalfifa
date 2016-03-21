@@ -1,0 +1,36 @@
+<h1>Alla fixtures</h1>
+
+<%= link_to 'Ny Turre', new_cup_path %>
+<br><br>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Turre</th>
+      <th>Spelare</th>
+      <th>Gjorda mål</th>
+      <th>Insläppta mål</th>
+      <th>Poäng</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fixtures.each do |fixture| %>
+      <tr>
+        <td><%= fixture.id %></td>
+        <td><%= fixture.cup.title %></td>
+        <td><%= fixture.player.name %></td>
+        <td><%= fixture.goals_f %></td>
+        <td><%= fixture.goals_a %></td>
+        <td><%= fixture.points %></td>
+        <td><%= link_to 'Visa', fixture %></td>
+        <td><%= link_to 'Radera', fixture, method: :delete, data: { confirm: 'Är du säker?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

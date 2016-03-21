@@ -1,0 +1,28 @@
+<%= simple_form_for @match do |f| %>
+  <% if @match.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@match.errors.count, "error") %>. Matchen kunde inte skapas pga:
+      </h2>
+      <ul>
+        <% @match.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :Turre %><br>
+    <%= f.association :cup, as: :radio_buttons %>
+  </p>
+
+  <p>
+    <%= f.label :Välj_spelare %><br>
+    <%= f.association :players, as: :check_boxes %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

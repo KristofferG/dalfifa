@@ -1,0 +1,33 @@
+<h1>Alla matcher</h1>
+
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Turre</th>
+      <th>Lag 1</th>
+      <th>Lag 2</th>
+      <th>Lag1 mål</th>
+      <th>Lag2 mål</th>
+      <th>Datum</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matches.each do |match| %>
+      <tr>
+        <td><%= match.cup.title %></td>
+        <td><%= match.players[0][:name] %> & <%= match.players[1][:name] %></td>
+        <td><%= match.players[2][:name] %> & <%= match.players[3][:name] %></td>
+        <td><%= match.team1_score %></td>
+        <td><%= match.team2_score %></td>
+        <td><%= match.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Korrigera resultat', :action => "edit_matches" %>

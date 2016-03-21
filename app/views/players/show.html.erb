@@ -1,0 +1,19 @@
+<p>
+  <strong>Namn:</strong>
+  <%= @player.name %>
+</p>
+
+<p>
+  <strong>Spelade matcher:</strong>
+  <%= @player.games_played %>
+</p>
+
+<p>
+  <strong>Poäng:</strong>
+  <%= @player.points %>
+</p>
+
+<p>
+  <strong>Turrar:</strong>
+  <%= @player.cups.map {|c| c.title}.join(', ') %>
+</p>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  points: 1
+  goals_f: 1
+  goals_a: 1
+  coop: 1
+  opps: MyText
+  fixture_id: 
+
+two:
+  points: 1
+  goals_f: 1
+  goals_a: 1
+  coop: 1
+  opps: MyText
+  fixture_id: 

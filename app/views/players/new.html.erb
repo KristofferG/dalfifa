@@ -1,0 +1,12 @@
+<h1>Skapa en ny spelare</h1>
+
+<%= form_for :player, url: players_path do |f| %>
+  <div class="form-group">
+    <%= f.label :namn %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class ="form group">
+    <%= f.submit "SKAPA SPELARE", class: "btn btn-primary" %>
+  </div>
+<% end %>

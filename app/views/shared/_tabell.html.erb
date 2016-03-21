@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="well col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>M</td>
+          <th>GM</td>
+          <th>IM</td>
+          <th>+/-</td>
+          <th>P</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @fixtures = @cup.fixtures.sort_by { |hsh| [hsh[:points]*-1, hsh[:goals_f]*-1,] } %>
+        <% n = 0 %>
+        <% @fixtures.each do |fixture| %>
+          <% n += 1 %>
+          <tr>
+            <td align ="right"><%= n %>.</td>
+            <td><%= fixture.player.name %></td>
+            <td><%= fixture.games_played %></td>
+            <td><%= fixture.goals_f %></td>
+            <td><%= fixture.goals_a %></td>
+            <td><%= fixture.goals_f - fixture.goals_a %></td>
+            <td><%= fixture.points %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <small><b>M</b> = Spelade matcher, <b>GM</b> = Gjorda mål, <b>IM</b> = Insläppta mål, <b>+/-</b> = målskillnad, <b>P</b> = Poäng</small>
+  </div>
+</div>

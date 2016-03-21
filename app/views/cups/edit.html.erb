@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <div>
+      <h1>Redigera Turre</h1>
+
+      <%= render 'form' %>
+
+  <br>
+  <br>
+      <div id="cup_form">
+        <%= simple_form_for(@cup, html: { class: 'form-horizontal'}) do |f| %>
+        <label>Godkänd av Pennert?</label>
+        <%= f.input :official, as: :radio_buttons %>
+        <div class="actions form-group">
+            <%= f.submit "Uppdatera turrestatus", class: 'btn btn-danger'%>
+        </div>
+        <% end %>
+      </div>
+
+      <%= link_to 'Tillbaka', :back %>
+    </div>
+  </div>
+</div>

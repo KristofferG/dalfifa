@@ -1,0 +1,22 @@
+<div class="row">
+<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-lg-8 col-lg-offset-2" align="center">
+<div class="logo">
+  <%= image_tag("dalfifa_logo.png", alt: 'Dalfifa', height: '311', width: '300') %>
+</div>
+
+<br><br>
+<%= render 'shared/cups' %>
+<div>
+<%= link_to 'SKAPA TURRE', new_cup_path, class: 'btn btn-primary btn-lg' %>
+</div>
+
+<br><br>
+
+
+<br><br>
+<%= render 'shared/maratontabell' %>
+
+</div>
+</div>
+
+<%= render 'shared/footer' %>

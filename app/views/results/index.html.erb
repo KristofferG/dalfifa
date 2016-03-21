@@ -1,0 +1,38 @@
+<h1>Alla resultat per spelare</h1>
+
+<%= link_to 'Ny Turre', new_cup_path %>
+<br><br>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Match</th>
+      <th>Spelare</th>
+      <th>Mål gjorda</th>
+      <th>Mål insläppta</th>
+      <th>Poäng</th>
+      <th>Medspelare</th>
+      <th>Motståndare</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @results.each do |result| %>
+      <tr>
+        <td><%= result.id %></td>
+        <td><%= result.match.id %></td>
+        <td><%= result.player.name %></td>
+        <td><%= result.goals_f %></td>
+        <td><%= result.goals_a %></td>
+        <td><%= result.points %></td>
+        <td><%= result.coop %></td>
+        <td><%= result.opps %></td>
+        <td><%= link_to 'Visa', result %></td>
+        <td><%= link_to 'Radera', result, method: :delete, data: { confirm: 'Är du säker?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
