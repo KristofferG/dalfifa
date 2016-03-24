@@ -1,3 +1,39 @@
 // Place all the styles related to the cups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+input[type=number] {
+    padding: 10px 12px;
+    margin: 2px 0;
+}
+
+
+input[type="checkbox"]{
+cursor: pointer;
+-webkit-appearance: none;
+appearance: none;
+background: #34495E;
+opacity: .1;
+border-radius: 5px;
+box-sizing: border-box;
+position: relative;
+box-sizing: content-box ;
+width: 145px;
+height: 26px;
+border-width: 3;
+transition: all .1s linear;
+}
+input[type="checkbox"]:checked{
+  background-color: #2ECC71;
+  opacity: .5;
+}
+input[type="checkbox"]:focus{
+  outline: 0 none;
+  box-shadow: none;
+}
+
+
+
+.vcenter {
+    vertical-align: middle;
+    float: none;
+}

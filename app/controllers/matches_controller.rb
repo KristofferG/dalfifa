@@ -34,6 +34,7 @@ class MatchesController < ApplicationController
     @match = Match.find(params[:id])
 
     if @match.update(match_params)
+      UpdateResults.new().update_single_result(params)
       redirect_to @match
     else
       redirect_to 'index', notice:"Resultat uppdaterat"

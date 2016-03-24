@@ -18,6 +18,14 @@
 <br><br>
 
 <div align="center">
+
+<% if logged_in? %>
 <%= link_to 'Ändra', edit_cup_path(@cup) %> |
+<% end %>
 <%= link_to 'Tillbaka', :back %>
 </div>
+
+</div>
+</div>
+
+<%= render 'shared/footer' %>

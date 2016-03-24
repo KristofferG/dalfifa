@@ -1,9 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<div class="row">
+	<div class="col-xs-12 col-md-8 col-md-offset-2">
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+		<div class="jumbotron">
+		<h1>Yo <%= @user.name %>!</h1>
+		<p>När du är inloggad kan du ändra resultat i matcher, radera kommentarer och turneringar, men framför allt - Deklarera en turre som officiell (glöm inte att du måste ha skriftligt intyg från Pennert).</p>
+		</div>
+
+		<div>
+		<p>With great powers comes great responsibilities - när du radera en turre, eller en spelare så raderas den för alltid, går inte att ångra senare. För att inte ha massa onödiga rader i databasen så finns det inbyggda relationer mellan objekten, så när du raderar en turre så kommer samtliga matcher, resultat, kommentarer samt dess tabell att raderas automatiskt.</p>
+		<p class="text-muted"><small>Även om det är tekniskt möjligt för dig som är inloggad att radera en specefik match i en turnering, eller plocka bort en spelare från en turre så bör (skall) det inte göras. Vill du radera en spelare, börja med att kontrollera så att inte spelaren är inkluderad i en turre.</small></p>
+		</div>
+
+		<div class="panel panel-success">
+		  <div class="panel-heading">
+			<h3 class="panel-title">Ändra turrar</h3>
+		  </div>
+		  <div class="panel-body">
+			Här kan du ändra en turre - ge officell status, byta namn, eller radera den totalt.
+			<p class="text-right"><%= link_to 'ÄNDRA TURRAR', cups_path, class: 'btn btn-danger btn-sm' %></p>
+		  </div>
+		</div>
+
+		<div class="panel panel-success">
+		  <div class="panel-heading">
+			<h3 class="panel-title">Korrigera matchresultat</h3>
+		  </div>
+		  <div class="panel-body">
+			Om ett felaktigt resultat har sparats kan du korrigera det hör. Tänk på att korrigera korrekt match i korrekt turnering.
+			<p class="text-right"><%= link_to 'ÄNDRA RESULTAT', matches_path, class: 'btn btn-danger btn-sm' %></p>
+		  </div>
+		</div>
+
+		<div class="panel panel-success">
+		  <div class="panel-heading">
+			<h3 class="panel-title">Radera spelare</h3>
+		  </div>
+		  <div class="panel-body">
+			Du kan radera en spelare - tänk på att först säkerställa att spelaren inte ingår i någon turnering.
+			<p class="text-right"><%= link_to 'RADERA SPELARE', players_path, class: 'btn btn-danger btn-sm' %></p>
+		  </div>
+		</div>
+
+
+<%= link_to 'TILLBAKA', users_path, class: 'btn btn-default col-xs-5 col-md-3' %><%= link_to 'LOGGA UT', sessions_destroy_path, class: 'btn btn-default col-xs-5 col-xs-offset-2 col-md-3 col-md-offset-6' %>
+
+	</div>
+</div>
+<%= render 'shared/footer' %>

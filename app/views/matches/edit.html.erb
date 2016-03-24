@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+<div align="center"><h1>Uppdatera resultat</h1>
+<h3><%= @match.cup.title %></h3>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+<%= simple_form_for @match, defaults: { input_html: { class: 'form-control' } } do |f| %>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Lag 1</th>
+      <th></th>
+      <th></th>
+      <th>Lag 2</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= @match.players[0].name %> & <%= @match.players[1].name %></td>
+        <td><%= f.input :team1_score, as: :integer, label: false  %></td>
+        <td><%= f.input :team2_score, as: :integer, label: false  %></td>
+        <td> <%= @match.players[2].name %> & <%= @match.players[3].name %></td>
+
+      </tr>
+    </tbody>
+  </table>
+<br>
+  <div class="actions" align="center">
+    <%= submit_tag "Ändra resultat", class: 'btn btn-danger btn-lg'%>
+  </div>
+<% end %>
+</div>
+</div>

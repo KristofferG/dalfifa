@@ -1,11 +1,21 @@
 <p>
-  <strong>Match:</strong>
+  <strong>Match ID:</strong>
   <%= @match.id %>
+</p>
+
+<p>
+  <strong>Turre:</strong>
+  <%= @match.cup.title %>
 </p>
 
 <p>
   <strong>Spelare:</strong>
   <%= @match.players.map {|p| p.name}.join(', ') %>
+</p>
+
+<p>
+  <strong>Resultat:</strong>
+  <%= @match.team1_score %> : <%= @match.team2_score %>
 </p>
 
 <%= link_to 'Tillbaka', matches_path %>

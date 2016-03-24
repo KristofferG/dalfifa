@@ -5,9 +5,11 @@
       <div class="panel panel-success">
         <div class="panel-heading">
           <class="panel-title"><strong><%= comment.commenter %></strong> &nbsp;&nbsp;<small><%= comment.created_at.strftime("%Y.%m.%d") %> &nbsp;
-            <%= link_to 'radera', [comment.cup, comment],
-               method: :delete, class: 'label label-default',
-               data: { confirm: 'Är du säker?' } %>
+            <% if logged_in? %>
+              <%= link_to 'radera', [comment.cup, comment],
+                 method: :delete, class: 'label label-danger',
+                 data: { confirm: 'Är du säker?' } %>
+            <% end %>
           </small>
         </div>
         <div class="panel-body">
