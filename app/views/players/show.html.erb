@@ -1,19 +1,34 @@
-<p>
-  <strong>Namn:</strong>
-  <%= @player.name %>
-</p>
+<% p_snitt = @player.points / @player.games_played.to_f %>
+<% m_snitt = @player.goals_f / @player.games_played.to_f %>
+  <div align="center">
+  <h1><%= @player.name %></h1><br>
+  </div>
+<div class="col-xs-12 col-sm-6 col-md-4">
+<div class="playerbox">Antal turrar<br>
+  <span class="playerhuge"><%= @player.cups.count %></span></div>
+</div>
 
-<p>
-  <strong>Spelade matcher:</strong>
-  <%= @player.games_played %>
-</p>
+<div class="col-xs-12 col-sm-6 col-md-4">
+<div class="playerbox">Spelade matcher<br>
+  <span class="playerhuge"><%= @player.games_played %></span></div>
+</div>
 
-<p>
-  <strong>Poäng:</strong>
-  <%= @player.points %>
-</p>
+<div class="col-xs-12 col-sm-6 col-md-4">
+<div class="playerbox">Poängsnitt<br>
+  <span class="playerhuge"><%= p_snitt.round(2) %></span></div>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-4">
+<div class="playerbox">Mål per match<br>
+  <span class="playerhuge"><%= m_snitt.round(2) %></span></div>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-4">
+<div class="playerbox">Mål totalt<br>
+  <span class="playerhuge"><%= @player.goals_f %></span></div>
+</div>
 
-<p>
-  <strong>Turrar:</strong>
-  <%= @player.cups.map {|c| c.title}.join(', ') %>
-</p>
+<br>
+<div class="row">
+<div align="center" class="col-xs-12"><%= link_to 'Tillbaka', players_path %>
+<%= render 'shared/footer' %>
+</div>
+</div>

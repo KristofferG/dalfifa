@@ -1,24 +1,31 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+
 <h1>Spelare</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Spelare</th>
+      <th>Namn</th>
       <th>Turrar</th>
       <th></th>
-      <th></th>
-      <th></th>
+      <% if logged_in? %>
+        <th></th>
+        <th></th>
+      <% end %>
     </tr>
   </thead>
 
   <tbody>
     <% @players.each do |player| %>
       <tr>
-        <td><%= player.name %></td>
+        <td><strong><%= player.name %></strong></td>
         <td><%= player.cups.map {|c| c.title}.join(', ') %></td>
         <td><%= link_to 'Visa', player %></td>
-        <td><%= link_to 'Ändra', edit_player_path(player) %></td>
-        <td><%= link_to 'Radera', player, method: :delete, data: { confirm: 'Är du säker?' } %></td>
+        <% if logged_in? %>
+          <td><%= link_to 'Ändra', edit_player_path(player), class: 'btn btn-danger btn-xs' %></td>
+          <td><%= link_to 'Radera', player, method: :delete, data: { confirm: 'Är du säker?' }, class: 'btn btn-danger btn-xs' %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -27,3 +34,6 @@
 <br>
 
 <%= link_to 'Skapa ny Spelare', new_player_path %>
+
+  </div>
+</div>

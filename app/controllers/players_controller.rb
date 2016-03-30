@@ -14,6 +14,7 @@ class PlayersController < ApplicationController
   end
 
   def edit
+    @player = Player.find(params[:id])
     @cups = Cup.all
   end
 
@@ -26,6 +27,16 @@ class PlayersController < ApplicationController
   end
   @cups = Cup.all
   @matches = Match.all
+
+  def update
+    @player = Player.find(params[:id])
+
+    if @player.update(player_params)
+      redirect_to players_path
+    else
+      redirect_to @player
+    end
+  end
 
   def destroy
     @player = Player.find(params[:id])

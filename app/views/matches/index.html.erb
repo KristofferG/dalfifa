@@ -26,7 +26,13 @@
         <td class="text-right"><%= match.team1_score %></td>
         <th class="text-center">:</th>
         <td><%= match.team2_score %></td>
-        <td><%= match.players[2][:name] %> & <%= match.players[3][:name] %></td>
+        <td>
+        <% if match.players[2].nil? %>
+          Datalag
+        <% else %>
+         <%= match.players[2].name %> & <%= match.players[3].name %>
+        <% end %>
+        </td>
         <td><small><%= match.created_at.strftime("%Y.%m.%d") %></small></td>
         <% if logged_in? %>
           <td><%= link_to 'EDIT', edit_match_path(match), class: 'btn btn-danger btn-xs' %></td>
