@@ -6,13 +6,13 @@
       <tr>
         <td align="right"><h5> <%= match.players[0].name %> & <%= match.players[1].name %></h5></td>
         <% if match[:team1_score].nil? %>
-        <td><%= match_fields.number_field :team1_score, in: 0..10, class: 'form-control' %> <% @all_done = false %></td>
+        <td align="right"><%= match_fields.number_field :team1_score, in: 0..9, class: 'form-control', style: 'width:60px' %> <% @all_done = false %></td>
         <% else %>
         <td align="right"><h4> <%= match[:team1_score] %></h4></td>
         <% end %>
         <td><h4>:</h4></td>
         <% if match[:team2_score].nil? %>
-        <td><%= match_fields.number_field :team2_score, in: 0..10, class: 'form-control'  %> <% @all_done = false %></td>
+        <td><%= match_fields.number_field :team2_score, in: 0..9, class: 'form-control', style: 'width:60px'  %> <% @all_done = false %></td>
         <% else %>
         <td><h4><%= match[:team2_score] %></h4></td>
         <% end %>

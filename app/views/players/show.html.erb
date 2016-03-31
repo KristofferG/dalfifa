@@ -1,6 +1,7 @@
 <% p_snitt = @player.points / @player.games_played.to_f %>
 <% m_snitt = @player.goals_f / @player.games_played.to_f %>
   <div align="center">
+    <%= @player.avatar %>
   <h1><%= @player.name %></h1><br>
   </div>
 <div class="col-xs-12 col-sm-6 col-md-4">
