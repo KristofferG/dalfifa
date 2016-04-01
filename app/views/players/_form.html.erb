@@ -7,7 +7,7 @@
   <% if @player.avatar? %>
      <div class="form-group">
        <p>Current avatar</p>
-       <%= image_tag (@player.avatar.profile.url) %>
+       <%= image_tag (@player.avatar.url (:profile)) %>
      </div>
    <% end %>
 

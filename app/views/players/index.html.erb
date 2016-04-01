@@ -1,12 +1,13 @@
 <div class="row">
-  <div class="col-xs-12 col-md-6">
+  <div class="col-xs-12 col-md-8">
 
 <h1>Spelare</h1>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Namn</th>
+      <th></th>
+      <th></th>
       <th>Turrar</th>
       <th></th>
       <% if logged_in? %>
@@ -19,6 +20,11 @@
   <tbody>
     <% @players.each do |player| %>
       <tr>
+        <td>
+          <% if player.avatar? %>
+          <%= image_tag player.avatar.tiny, :class => "photo_small", :crop => "fill", :gravity => "face", :width => 25, :height => 25, :dpr => 2.0 %>
+        <% end %>
+        </td>
         <td><strong><%= player.name %></strong></td>
         <td><%= player.cups.map {|c| c.title}.join(', ') %></td>
         <td><%= link_to 'Visa', player %></td>

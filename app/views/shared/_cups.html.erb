@@ -14,8 +14,17 @@
       <tr>
         <td><%= cup.title %> &nbsp; <%= image_tag("officiell.png", alt: 'Approved by Pennert', height: '41', width: '50') if cup.official == true  %></td>
         <td><small><%= cup.created_at.strftime("%Y.%m.%d") %></small></td>
-        <td><small><%= cup.players.map {|p| p.name}.join(', ') %></small></td>
-        <td align="right" style="vertical-align:middle"><%= link_to 'VISA', cup, class: 'btn btn-success btn-xs' %></td>
+        <!-- <td><small><%= cup.players.map {|p| p.name}.join(', ') %></small></td> !-->
+        <td>
+          <% cup.players.each do |p| %>
+            <% if p.avatar? %>
+              <%= image_tag p.avatar.tiny, :class => "photo_small", :dpr => 2.0, :width => 25, :height => 25, :title => p.name %>
+            <% else %>
+              <%= p.name %>
+            <% end %>
+          <% end %>
+        </td>
+        <td align="right" style="vertical-align:middle"><%= link_to 'Visa', cup, class: 'btn btn-success btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>
