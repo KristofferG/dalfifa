@@ -1,45 +1,31 @@
-<div class="row">
-  <div class="col-xs-12 col-md-8">
+<div class="row" align="center">
 
-<h1>Spelare</h1>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th>Turrar</th>
-      <th></th>
-      <% if logged_in? %>
-        <th></th>
-        <th></th>
-      <% end %>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @players.each do |player| %>
-      <tr>
-        <td>
+  <% @players.each do |player| %>
+    <div class="col-xs-12, col-sm-6 col-md-4 col-lg-3 margin_bottom">
+        <%= link_to player do %>
           <% if player.avatar? %>
-          <%= image_tag player.avatar.tiny, :class => "photo_small", :crop => "fill", :gravity => "face", :width => 25, :height => 25, :dpr => 2.0 %>
-        <% end %>
-        </td>
-        <td><strong><%= player.name %></strong></td>
-        <td><%= player.cups.map {|c| c.title}.join(', ') %></td>
-        <td><%= link_to 'Visa', player %></td>
-        <% if logged_in? %>
-          <td><%= link_to 'Ändra', edit_player_path(player), class: 'btn btn-danger btn-xs' %></td>
-          <td><%= link_to 'Radera', player, method: :delete, data: { confirm: 'Är du säker?' }, class: 'btn btn-danger btn-xs' %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <div class="player_image">
+            <%= image_tag player.avatar, :class => "photo", :crop => "fill", :gravity => "face", :width => 250, :height => 200, :dpr => 2.0 %>
+            <h2><span><%= player.name %></span></h2>
+          </div>
+          <% else %>
+          <div>
+            <h3><%= player.name %></h3>
+          </div>
+          <% end %>
+      <% end %>
+      <p class="player_button">
+      <% if logged_in? %>
+        <%= link_to 'Ändra', edit_player_path(player), class: 'btn btn-danger btn-xs' %>&nbsp;
+        <%= link_to 'Radera', player, method: :delete, data: { confirm: 'Är du säker?' }, class: 'btn btn-danger btn-xs' %>
+      <% end %>
+      </p>
+    </div>
+  <% end %>
+<br>
+</div>
+
+<%= link_to 'Lägg till spelare', new_player_path, :class => 'btn btn-default btn-xs' %>
 
 <br>
-
-<%= link_to 'Skapa ny Spelare', new_player_path %>
-
-  </div>
-</div>
+<%= render 'shared/footer' %>

@@ -12,10 +12,9 @@
     <% @cups = Cup.all %>
     <% @cups.each do |cup| %>
       <tr>
-        <td><%= cup.title %> &nbsp; <%= image_tag("officiell.png", alt: 'Approved by Pennert', height: '41', width: '50') if cup.official == true  %></td>
-        <td><small><%= cup.created_at.strftime("%Y.%m.%d") %></small></td>
-        <!-- <td><small><%= cup.players.map {|p| p.name}.join(', ') %></small></td> !-->
-        <td>
+        <td style="vertical-align:middle"><%= cup.title %> &nbsp; <%= image_tag("officiell.png", alt: 'Approved by Pennert', height: '41', width: '50') if cup.official == true  %></td>
+        <td style="vertical-align:middle"><small><%= cup.created_at.strftime("%Y.%m.%d") %></small></td>
+        <td style="vertical-align:middle">
           <% cup.players.each do |p| %>
             <% if p.avatar? %>
               <%= image_tag p.avatar.tiny, :class => "photo_small", :dpr => 2.0, :width => 25, :height => 25, :title => p.name %>
