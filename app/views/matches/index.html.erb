@@ -3,39 +3,34 @@
 <h1>Alla matcher</h1>
 
 <table class="table table-condensed">
-  <thead>
-    <tr>
-      <th>Turre</th>
-      <th class="text-right">Lag 1</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th>Lag2</th>
-      <th>Datum</th>
-      <% if logged_in? %>
-        <th></th>
-      <% end %>
-    </tr>
-  </thead>
 
   <tbody>
     <% @matches.each do |match| %>
       <tr>
-        <td><span class="label label-default"><%= match.cup.title %></span></td>
-        <td class="text-right"><%= match.players[0][:name] %> & <%= match.players[1][:name] %></td>
-        <td class="text-right"><%= match.team1_score %></td>
-        <th class="text-center">:</th>
-        <td><%= match.team2_score %></td>
         <td>
-        <% if match.players[2].nil? %>
-          Datalag
-        <% else %>
-         <%= match.players[2].name %> & <%= match.players[3].name %>
-        <% end %>
+          <% if match.cup.official == true %>
+            <span class="officiel">
+          <% else %>
+            <span class="small_font">
+          <% end %>
+          <b><%= match.cup.title %></b></span><span class="small_font"> - <%= match.created_at.strftime("%Y %m.%d") %></span><br>
+          <% if match.team1_score.to_i > match.team2_score.to_i %>
+            <b>
+          <% end %>
+          <%= match.players[0][:name] %> & <%= match.players[1][:name] %>: <%= match.team1_score %></b><br>
+          <% if match.team2_score.to_i > match.team1_score.to_i %>
+            <b>
+          <% end %>
+          <% if match.players[2].nil? %>
+            Datalag:
+          <% else %>
+           <%= match.players[2].name %> & <%= match.players[3].name %>:
+          <% end %>
+          <%= match.team2_score %></b>
         </td>
-        <td><small><%= match.created_at.strftime("%Y.%m.%d") %></small></td>
+
         <% if logged_in? %>
-          <td><%= link_to 'EDIT', edit_match_path(match), class: 'btn btn-danger btn-xs' %></td>
+          <td style="vertical-align:middle"><%= link_to 'EDIT', edit_match_path(match), class: 'btn btn-danger btn-xs' %></td>
         <% end %>
       </tr>
     <% end %>
@@ -44,4 +39,7 @@
 
   </div>
 </div>
+
+<%= link_to 'Tillbaka', :back %>
+
 <%= render 'shared/footer' %>

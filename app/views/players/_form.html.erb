@@ -6,13 +6,13 @@
 
   <% if @player.avatar? %>
      <div class="form-group">
-       <p>Current avatar</p>
+       <p>Profilbild</p>
        <%= image_tag (@player.avatar.url (:profile)) %>
      </div>
    <% end %>
 
    <div class="form-group">
-      <%= f.label :avatar %>
+      <%= f.label :profilbild %>
       <%= f.file_field :avatar %>
       <%= f.hidden_field :avatar_cache %>
     </div>
