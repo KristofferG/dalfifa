@@ -17,6 +17,9 @@
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <li>
+          <%= link_to('Admin', current_user) %>
+          </li>
+          <li>
           <%= link_to('Logga ut', sessions_destroy_path) %>
           </li>
         <% else %>

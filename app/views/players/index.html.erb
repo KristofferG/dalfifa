@@ -5,8 +5,8 @@
         <%= link_to player do %>
           <% if player.avatar? %>
           <div class="player_image">
-            <%= image_tag player.avatar, :class => "photo", :crop => "fill", :gravity => "face", :width => 250, :height => 200, :dpr => 2.0 %>
-            <h2><span><%= player.name %></span></h2>
+            <%= image_tag player.avatar, :class => "photo grow", :crop => "fill", :gravity => "face", :width => 250, :height => 200, :dpr => 2.0 %>
+            <h2 class="grow"><span><%= player.name %></span></h2>
           </div>
           <% else %>
           <div>
