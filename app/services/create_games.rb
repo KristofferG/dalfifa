@@ -8,6 +8,7 @@ class CreateGames
     @cup_id = cup_id
     @player_ids = player_ids
     num_players = player_ids.count - 1
+    looping = num_players + 2
     @players = player_ids.reject { |c| c.empty? }
     player = []
     def skapa_spelare(id) {
@@ -35,15 +36,15 @@ class CreateGames
   		spelare2 = player[1]
   		spelare3 = player[0]
   		spelare4 = player[2]
-  		num_players.times do | i |
+  		looping.times do | i |
   			break unless spelare1[:coop].include?(spelare2[:id]) || spelare1 == spelare2
   			spelare2 = player[i]
   		end
-  		num_players.times do | i |
+  		looping.times do | i |
   			break unless spelare3 == spelare1 || spelare3 == spelare2
   			spelare3 = player[i]
   		end
-  		num_players.times do | i |
+  		looping.times do | i |
   			break unless spelare3[:coop].include?(spelare4[:id]) || spelare4 == spelare3 || spelare4 == spelare1 || spelare4 == spelare2
   			spelare4 = player[i]
   		end
