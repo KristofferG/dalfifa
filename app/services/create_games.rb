@@ -35,18 +35,34 @@ class CreateGames
   		spelare2 = player[1]
   		spelare3 = player[0]
   		spelare4 = player[2]
-  		num_players.times do | i |
-  			break unless spelare1[:coop].include?(spelare2[:id]) || spelare1 == spelare2
-  			spelare2 = player[i]
-  		end
-  		num_players.times do | i |
-  			break unless spelare3 == spelare1 || spelare3 == spelare2
-  			spelare3 = player[i]
-  		end
-  		num_players.times do | i |
-  			break unless spelare3[:coop].include?(spelare4[:id]) || spelare4 == spelare3 || spelare4 == spelare1 || spelare4 == spelare2
-  			spelare4 = player[i]
-  		end
+      if num_players == 7
+        spelare1 = player[0]
+    		num_players.times do | i |
+    			break unless spelare1[:coop].include?(spelare2[:id]) || spelare1 == spelare2
+    			spelare2 = player[i]
+    		end
+    		num_players.times do | i |
+    			break unless spelare3 == spelare1 || spelare3 == spelare2
+    			spelare3 = player[i]
+    		end
+    		num_players.times do | i |
+    			break unless spelare3[:coop].include?(spelare4[:id]) || spelare4 == spelare3 || spelare4 == spelare1 || spelare4 == spelare2
+          spelare4 = player[i]
+    		end
+      else
+        num_players.times do | i |
+          break unless spelare1[:coop].include?(spelare2[:id]) || spelare1 == spelare2
+          spelare2 = player[i]
+        end
+        num_players.times do | i |
+          break unless spelare3 == spelare1 || spelare3 == spelare2
+          spelare3 = player[i]
+        end
+        num_players.times do | i |
+          break unless spelare3[:coop].include?(spelare4[:id]) || spelare4 == spelare3 || spelare4 == spelare1 || spelare4 == spelare2
+          spelare4 = player[i]
+        end
+      end
 
       spelare1[:assigned] +=1
   		spelare1[:home] +=1
