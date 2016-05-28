@@ -9,8 +9,8 @@ class UpdateResults
       @match = Match.find(id.to_i)
       @cup_id = @match.cup.id
       @results = Result.where(match_id: id.to_i)
-      team1_score = @match[:team1_score]
-      team2_score = @match[:team2_score]
+      team1_score = @match[:team2_score]
+      team2_score = @match[:team1_score]
 
       if team1_score.nil?
         team1_points = 0
