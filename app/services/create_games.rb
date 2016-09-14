@@ -84,7 +84,7 @@ class CreateGames
       match_id = @match.id
       CreateResults.new().create_result(match_id, spelare1[:id], spelare2[:id], spelare3[:id], spelare4[:id])
     end
-    if num_players == 6 || num_players == 7
+    if num_players == 6 || num_players == 7 || num_players == 11
       player.sort_by! { |hsh| [hsh[:assigned], hsh[:away]] }
       spelare1 = player[0]
   		spelare2 = player[1]
